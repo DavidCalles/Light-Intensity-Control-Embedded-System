@@ -1,0 +1,21 @@
+!SESSION 2021-11-30 18:05:30.873 -----------------------------------------------
+eclipse.buildId=Version 1.6.0
+java.version=11.0.9.1
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2021-11-30 18:06:10.511
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2021-11-30 18:06:10.597
+!MESSAGE Log4j initialized with config file C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 4 4 2021-11-30 18:06:16.127
+!MESSAGE com.st.stm32cube.ide.mcu.ide/META-INF/version/build_ref file not found, build reference will not be reported into properties
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2021-11-30 18:06:27.525
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2021-11-30 18:08:40.728
+!MESSAGE Indexed 'CubeProject' (22 sources, 82 headers) in 2.45 sec: 4,756 declarations; 22,696 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0073%)
