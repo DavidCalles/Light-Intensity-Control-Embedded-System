@@ -151,7 +151,7 @@ int main(void)
   while (1)
   {
 	  HAL_Delay(1000);
-	  printf("LIGHT: adc-%ld, R-%f.2\n\r", lightRaw, lightResistance);
+	  printf("LIGHT: %ld\n\r", lightRaw);
 	  printf("MOTION: %d\n\r", (uint16_t)motion);
 	  printf("WAKEUP: %d\n\r", (uint16_t)systemState);
 
@@ -473,9 +473,9 @@ float RawADC2Resistance(uint32_t rawADC){
 // Used to check sampling frequency
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc){
 
+	// Sample motion sensor at same rate than
 	//HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
-	// Raw adc to sensor resistance conversion
-	lightResistance = RawADC2Resistance(lightRaw);
+	RawADC2Resistance(lightRaw);
 }
 
 /*--------------------------------------------------------------------------

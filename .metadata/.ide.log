@@ -985,3 +985,191 @@
 2021-11-30 19:05:23,668 [INFO] ADCParametersView:97 -                Rank 1 : false
 2021-11-30 19:05:23,669 [INFO] ADCParametersView:97 -                Rank 1 : false
 2021-11-30 19:05:23,763 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 22:38:21,947 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,454x196,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-11-30 22:38:36,072 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 722390584 Bytes (1008730112)
+2021-11-30 22:38:39,109 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 737596984 Bytes (1008730112)
+2021-11-30 22:38:41,477 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 824102456 Bytes (1008730112)
+2021-11-30 22:38:41,996 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: NVIC
+2021-11-30 22:38:41,997 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: USART
+2021-11-30 22:38:41,997 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: DMA
+2021-11-30 22:38:41,997 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: TIM1_8
+2021-11-30 22:38:41,998 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: TIM1_8
+2021-11-30 22:38:41,998 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: SYS
+2021-11-30 22:38:41,999 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: GPIO
+2021-11-30 22:38:41,999 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: ADC
+2021-11-30 22:38:41,999 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: RCC
+2021-11-30 22:38:42,002 [INFO] CodeGenerator:641 - code generatio: config db path: C:\ST\STM32CubeIDE_1.6.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.2.0.202102191602\\db\
+2021-11-30 22:38:42,019 [INFO] Argument:278 - Argument : hdmavalue: null
+2021-11-30 22:38:42,019 [INFO] Argument:280 - 	 sub Args: 
+2021-11-30 22:38:42,020 [INFO] Argument:278 - Argument : Instancevalue: DMA2_Stream0
+2021-11-30 22:38:42,020 [INFO] Argument:288 - Argument : Instancevalue: DMA2_Stream0
+2021-11-30 22:38:42,020 [INFO] Argument:278 - Argument : Initvalue: null
+2021-11-30 22:38:42,020 [INFO] Argument:280 - 	 sub Args: 
+2021-11-30 22:38:42,020 [INFO] Argument:278 - Argument : Channelvalue: DMA_CHANNEL_0
+2021-11-30 22:38:42,020 [INFO] Argument:288 - Argument : Channelvalue: DMA_CHANNEL_0
+2021-11-30 22:38:42,020 [INFO] Argument:278 - Argument : Directionvalue: DMA_PERIPH_TO_MEMORY
+2021-11-30 22:38:42,021 [INFO] Argument:288 - Argument : Directionvalue: DMA_PERIPH_TO_MEMORY
+2021-11-30 22:38:42,021 [INFO] Argument:278 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2021-11-30 22:38:42,021 [INFO] Argument:288 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2021-11-30 22:38:42,021 [INFO] Argument:278 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2021-11-30 22:38:42,021 [INFO] Argument:288 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2021-11-30 22:38:42,021 [INFO] Argument:278 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_HALFWORD
+2021-11-30 22:38:42,021 [INFO] Argument:288 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_HALFWORD
+2021-11-30 22:38:42,021 [INFO] Argument:278 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_HALFWORD
+2021-11-30 22:38:42,021 [INFO] Argument:288 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_HALFWORD
+2021-11-30 22:38:42,021 [INFO] Argument:278 - Argument : Modevalue: DMA_CIRCULAR
+2021-11-30 22:38:42,022 [INFO] Argument:288 - Argument : Modevalue: DMA_CIRCULAR
+2021-11-30 22:38:42,022 [INFO] Argument:278 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2021-11-30 22:38:42,022 [INFO] Argument:288 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2021-11-30 22:38:42,022 [INFO] Argument:278 - Argument : FIFOModevalue: DMA_FIFOMODE_DISABLE
+2021-11-30 22:38:42,022 [INFO] Argument:288 - Argument : FIFOModevalue: DMA_FIFOMODE_DISABLE
+2021-11-30 22:38:42,022 [INFO] Argument:278 - Argument : FIFOThresholdvalue: null
+2021-11-30 22:38:42,023 [INFO] Argument:288 - Argument : FIFOThresholdvalue: null
+2021-11-30 22:38:42,023 [INFO] Argument:278 - Argument : MemBurstvalue: null
+2021-11-30 22:38:42,023 [INFO] Argument:288 - Argument : MemBurstvalue: null
+2021-11-30 22:38:42,023 [INFO] Argument:278 - Argument : PeriphBurstvalue: null
+2021-11-30 22:38:42,023 [INFO] Argument:288 - Argument : PeriphBurstvalue: null
+2021-11-30 22:38:42,023 [INFO] Argument:278 - Argument : Lockvalue: null
+2021-11-30 22:38:42,024 [INFO] Argument:288 - Argument : Lockvalue: null
+2021-11-30 22:38:42,024 [INFO] Argument:278 - Argument : Statevalue: null
+2021-11-30 22:38:42,024 [INFO] Argument:288 - Argument : Statevalue: null
+2021-11-30 22:38:42,024 [INFO] Argument:278 - Argument : Parentvalue: null
+2021-11-30 22:38:42,024 [INFO] Argument:288 - Argument : Parentvalue: null
+2021-11-30 22:38:42,025 [INFO] Argument:278 - Argument : XferCpltCallbackvalue: null
+2021-11-30 22:38:42,025 [INFO] Argument:288 - Argument : XferCpltCallbackvalue: null
+2021-11-30 22:38:42,025 [INFO] Argument:278 - Argument : XferHalfCpltCallbackvalue: null
+2021-11-30 22:38:42,025 [INFO] Argument:288 - Argument : XferHalfCpltCallbackvalue: null
+2021-11-30 22:38:42,025 [INFO] Argument:278 - Argument : XferM1CpltCallbackvalue: null
+2021-11-30 22:38:42,026 [INFO] Argument:288 - Argument : XferM1CpltCallbackvalue: null
+2021-11-30 22:38:42,026 [INFO] Argument:278 - Argument : XferErrorCallbackvalue: null
+2021-11-30 22:38:42,026 [INFO] Argument:288 - Argument : XferErrorCallbackvalue: null
+2021-11-30 22:38:42,026 [INFO] Argument:278 - Argument : ErrorCodevalue: null
+2021-11-30 22:38:42,026 [INFO] Argument:288 - Argument : ErrorCodevalue: null
+2021-11-30 22:38:42,494 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\MXTmpFiles\license.tmp_save
+2021-11-30 22:38:42,617 [INFO] CodeEngine:247 - Generated code: C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\MXTmpFiles\license.tmp
+2021-11-30 22:38:42,657 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\MXTmpFiles\gpio.tmp_save
+2021-11-30 22:38:42,718 [INFO] CodeEngine:247 - Generated code: C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\MXTmpFiles\gpio.tmp
+2021-11-30 22:38:43,042 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2021-11-30 22:38:43,044 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2021-11-30 22:38:43,058 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\MXTmpFiles\dma.tmp_save
+2021-11-30 22:38:43,114 [INFO] CodeEngine:247 - Generated code: C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\MXTmpFiles\dma.tmp
+2021-11-30 22:38:43,118 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\MXTmpFiles\dma_GV.tmp_save
+2021-11-30 22:38:43,193 [INFO] CodeEngine:247 - Generated code: C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\MXTmpFiles\dma_GV.tmp
+2021-11-30 22:38:43,195 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2021-11-30 22:38:43,196 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2021-11-30 22:38:43,209 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\Core\Src\stm32f4xx_it.c_save
+2021-11-30 22:38:43,299 [INFO] CodeEngine:247 - Generated code: C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\Core\Src\stm32f4xx_it.c
+2021-11-30 22:38:43,304 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\Core\Inc\stm32f4xx_it.h_save
+2021-11-30 22:38:43,358 [INFO] CodeEngine:247 - Generated code: C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\Core\Inc\stm32f4xx_it.h
+2021-11-30 22:38:43,371 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\Core\Src\stm32f4xx_hal_msp.c_save
+2021-11-30 22:38:43,491 [INFO] CodeEngine:247 - Generated code: C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\Core\Src\stm32f4xx_hal_msp.c
+2021-11-30 22:38:43,496 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\MXTmpFiles\system.tmp_save
+2021-11-30 22:38:43,539 [INFO] CodeEngine:247 - Generated code: C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\MXTmpFiles\system.tmp
+2021-11-30 22:38:43,548 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\Core\Inc\stm32f4xx_hal_conf.h_save
+2021-11-30 22:38:43,615 [INFO] CodeEngine:247 - Generated code: C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\Core\Inc\stm32f4xx_hal_conf.h
+2021-11-30 22:38:43,650 [WARN] IPConfigManager:2976 - IP not found : TIM
+2021-11-30 22:38:43,651 [WARN] CodeGenerator:3191 - IP not found : null
+2021-11-30 22:38:43,659 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\Core\Inc\main.h_save
+2021-11-30 22:38:43,746 [INFO] CodeEngine:247 - Generated code: C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\Core\Inc\main.h
+2021-11-30 22:38:43,751 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\Core\Src\main.c_save
+2021-11-30 22:38:43,871 [INFO] CodeEngine:247 - Generated code: C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\Core\Src\main.c
+2021-11-30 22:38:44,821 [INFO] ProjectBuilder:2460 - Time for Copy HAL[1] : 116mS.
+2021-11-30 22:38:44,826 [INFO] ProjectBuilder:3418 - Project Generator version: 3.13.0-B3
+2021-11-30 22:38:45,276 [INFO] ConfigFileManager:1242 - The Die is : DIE431
+2021-11-30 22:38:47,489 [INFO] ProjectBuilder:3584 - Time for Generating toolchain IDE Files: 2663mS.
+2021-11-30 22:38:47,490 [INFO] ProjectBuilder:2339 - Time for Copy CMSIS : 0mS.
+2021-11-30 22:38:47,493 [INFO] ProjectBuilder:2339 - Time for Copy CMSIS : 0mS.
+2021-11-30 22:39:43,564 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-11-30 22:39:54,886 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 636484880 Bytes (1035993088)
+2021-11-30 22:39:56,015 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 652213520 Bytes (1035993088)
+2021-11-30 22:39:57,876 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 735573264 Bytes (1035993088)
+2021-11-30 22:39:58,269 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: NVIC
+2021-11-30 22:39:58,270 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: USART
+2021-11-30 22:39:58,271 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: DMA
+2021-11-30 22:39:58,271 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: TIM1_8
+2021-11-30 22:39:58,271 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: TIM1_8
+2021-11-30 22:39:58,271 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: SYS
+2021-11-30 22:39:58,272 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: GPIO
+2021-11-30 22:39:58,272 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: ADC
+2021-11-30 22:39:58,272 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: RCC
+2021-11-30 22:39:58,274 [INFO] CodeGenerator:641 - code generatio: config db path: C:\ST\STM32CubeIDE_1.6.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.2.0.202102191602\\db\
+2021-11-30 22:39:58,288 [INFO] Argument:278 - Argument : hdmavalue: null
+2021-11-30 22:39:58,288 [INFO] Argument:280 - 	 sub Args: 
+2021-11-30 22:39:58,288 [INFO] Argument:278 - Argument : Instancevalue: DMA2_Stream0
+2021-11-30 22:39:58,288 [INFO] Argument:288 - Argument : Instancevalue: DMA2_Stream0
+2021-11-30 22:39:58,288 [INFO] Argument:278 - Argument : Initvalue: null
+2021-11-30 22:39:58,288 [INFO] Argument:280 - 	 sub Args: 
+2021-11-30 22:39:58,288 [INFO] Argument:278 - Argument : Channelvalue: DMA_CHANNEL_0
+2021-11-30 22:39:58,288 [INFO] Argument:288 - Argument : Channelvalue: DMA_CHANNEL_0
+2021-11-30 22:39:58,288 [INFO] Argument:278 - Argument : Directionvalue: DMA_PERIPH_TO_MEMORY
+2021-11-30 22:39:58,288 [INFO] Argument:288 - Argument : Directionvalue: DMA_PERIPH_TO_MEMORY
+2021-11-30 22:39:58,288 [INFO] Argument:278 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2021-11-30 22:39:58,288 [INFO] Argument:288 - Argument : PeriphIncvalue: DMA_PINC_DISABLE
+2021-11-30 22:39:58,289 [INFO] Argument:278 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2021-11-30 22:39:58,289 [INFO] Argument:288 - Argument : MemIncvalue: DMA_MINC_ENABLE
+2021-11-30 22:39:58,289 [INFO] Argument:278 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_HALFWORD
+2021-11-30 22:39:58,289 [INFO] Argument:288 - Argument : PeriphDataAlignmentvalue: DMA_PDATAALIGN_HALFWORD
+2021-11-30 22:39:58,289 [INFO] Argument:278 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_HALFWORD
+2021-11-30 22:39:58,289 [INFO] Argument:288 - Argument : MemDataAlignmentvalue: DMA_MDATAALIGN_HALFWORD
+2021-11-30 22:39:58,289 [INFO] Argument:278 - Argument : Modevalue: DMA_CIRCULAR
+2021-11-30 22:39:58,289 [INFO] Argument:288 - Argument : Modevalue: DMA_CIRCULAR
+2021-11-30 22:39:58,289 [INFO] Argument:278 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2021-11-30 22:39:58,289 [INFO] Argument:288 - Argument : Priorityvalue: DMA_PRIORITY_LOW
+2021-11-30 22:39:58,289 [INFO] Argument:278 - Argument : FIFOModevalue: DMA_FIFOMODE_DISABLE
+2021-11-30 22:39:58,289 [INFO] Argument:288 - Argument : FIFOModevalue: DMA_FIFOMODE_DISABLE
+2021-11-30 22:39:58,289 [INFO] Argument:278 - Argument : FIFOThresholdvalue: null
+2021-11-30 22:39:58,289 [INFO] Argument:288 - Argument : FIFOThresholdvalue: null
+2021-11-30 22:39:58,290 [INFO] Argument:278 - Argument : MemBurstvalue: null
+2021-11-30 22:39:58,290 [INFO] Argument:288 - Argument : MemBurstvalue: null
+2021-11-30 22:39:58,290 [INFO] Argument:278 - Argument : PeriphBurstvalue: null
+2021-11-30 22:39:58,290 [INFO] Argument:288 - Argument : PeriphBurstvalue: null
+2021-11-30 22:39:58,290 [INFO] Argument:278 - Argument : Lockvalue: null
+2021-11-30 22:39:58,290 [INFO] Argument:288 - Argument : Lockvalue: null
+2021-11-30 22:39:58,290 [INFO] Argument:278 - Argument : Statevalue: null
+2021-11-30 22:39:58,290 [INFO] Argument:288 - Argument : Statevalue: null
+2021-11-30 22:39:58,290 [INFO] Argument:278 - Argument : Parentvalue: null
+2021-11-30 22:39:58,290 [INFO] Argument:288 - Argument : Parentvalue: null
+2021-11-30 22:39:58,290 [INFO] Argument:278 - Argument : XferCpltCallbackvalue: null
+2021-11-30 22:39:58,290 [INFO] Argument:288 - Argument : XferCpltCallbackvalue: null
+2021-11-30 22:39:58,290 [INFO] Argument:278 - Argument : XferHalfCpltCallbackvalue: null
+2021-11-30 22:39:58,290 [INFO] Argument:288 - Argument : XferHalfCpltCallbackvalue: null
+2021-11-30 22:39:58,290 [INFO] Argument:278 - Argument : XferM1CpltCallbackvalue: null
+2021-11-30 22:39:58,291 [INFO] Argument:288 - Argument : XferM1CpltCallbackvalue: null
+2021-11-30 22:39:58,291 [INFO] Argument:278 - Argument : XferErrorCallbackvalue: null
+2021-11-30 22:39:58,291 [INFO] Argument:288 - Argument : XferErrorCallbackvalue: null
+2021-11-30 22:39:58,291 [INFO] Argument:278 - Argument : ErrorCodevalue: null
+2021-11-30 22:39:58,291 [INFO] Argument:288 - Argument : ErrorCodevalue: null
+2021-11-30 22:39:58,731 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\MXTmpFiles\license.tmp_save
+2021-11-30 22:39:58,782 [INFO] CodeEngine:247 - Generated code: C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\MXTmpFiles\license.tmp
+2021-11-30 22:39:58,809 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\MXTmpFiles\gpio.tmp_save
+2021-11-30 22:39:58,863 [INFO] CodeEngine:247 - Generated code: C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\MXTmpFiles\gpio.tmp
+2021-11-30 22:39:59,057 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2021-11-30 22:39:59,059 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2021-11-30 22:39:59,110 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\MXTmpFiles\dma.tmp_save
+2021-11-30 22:39:59,153 [INFO] CodeEngine:247 - Generated code: C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\MXTmpFiles\dma.tmp
+2021-11-30 22:39:59,156 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\MXTmpFiles\dma_GV.tmp_save
+2021-11-30 22:39:59,202 [INFO] CodeEngine:247 - Generated code: C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\MXTmpFiles\dma_GV.tmp
+2021-11-30 22:39:59,204 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2021-11-30 22:39:59,206 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2021-11-30 22:39:59,220 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\Core\Src\stm32f4xx_it.c_save
+2021-11-30 22:39:59,327 [INFO] CodeEngine:247 - Generated code: C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\Core\Src\stm32f4xx_it.c
+2021-11-30 22:39:59,333 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\Core\Inc\stm32f4xx_it.h_save
+2021-11-30 22:39:59,383 [INFO] CodeEngine:247 - Generated code: C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\Core\Inc\stm32f4xx_it.h
+2021-11-30 22:39:59,396 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\Core\Src\stm32f4xx_hal_msp.c_save
+2021-11-30 22:39:59,487 [INFO] CodeEngine:247 - Generated code: C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\Core\Src\stm32f4xx_hal_msp.c
+2021-11-30 22:39:59,490 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\MXTmpFiles\system.tmp_save
+2021-11-30 22:39:59,537 [INFO] CodeEngine:247 - Generated code: C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\MXTmpFiles\system.tmp
+2021-11-30 22:39:59,546 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\Core\Inc\stm32f4xx_hal_conf.h_save
+2021-11-30 22:39:59,609 [INFO] CodeEngine:247 - Generated code: C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\Core\Inc\stm32f4xx_hal_conf.h
+2021-11-30 22:39:59,639 [WARN] IPConfigManager:2976 - IP not found : TIM
+2021-11-30 22:39:59,640 [WARN] CodeGenerator:3191 - IP not found : null
+2021-11-30 22:39:59,650 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\Core\Inc\main.h_save
+2021-11-30 22:39:59,706 [INFO] CodeEngine:247 - Generated code: C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\Core\Inc\main.h
+2021-11-30 22:39:59,712 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\Core\Src\main.c_save
+2021-11-30 22:39:59,859 [INFO] CodeEngine:247 - Generated code: C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\Core\Src\main.c
+2021-11-30 22:40:00,754 [INFO] ProjectBuilder:2460 - Time for Copy HAL[1] : 113mS.
+2021-11-30 22:40:00,759 [INFO] ProjectBuilder:3418 - Project Generator version: 3.13.0-B3
+2021-11-30 22:40:01,266 [INFO] ConfigFileManager:1242 - The Die is : DIE431
+2021-11-30 22:40:03,261 [INFO] ProjectBuilder:3584 - Time for Generating toolchain IDE Files: 2502mS.
+2021-11-30 22:40:03,262 [INFO] ProjectBuilder:2339 - Time for Copy CMSIS : 0mS.
+2021-11-30 22:40:03,266 [INFO] ProjectBuilder:2339 - Time for Copy CMSIS : 0mS.

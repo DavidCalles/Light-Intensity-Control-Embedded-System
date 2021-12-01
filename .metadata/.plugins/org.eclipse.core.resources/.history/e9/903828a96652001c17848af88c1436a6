@@ -151,7 +151,7 @@ int main(void)
   while (1)
   {
 	  HAL_Delay(1000);
-	  printf("LIGHT: adc-%ld, R-%f.2\n\r", lightRaw, lightResistance);
+	  printf("LIGHT: adc-%ld, R-%f\n\r", lightRaw, lightResistance);
 	  printf("MOTION: %d\n\r", (uint16_t)motion);
 	  printf("WAKEUP: %d\n\r", (uint16_t)systemState);
 

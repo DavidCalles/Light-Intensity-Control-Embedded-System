@@ -50,9 +50,6 @@ typedef struct {
 
 #define WAKEUP_TIME 10 // time in seconds
 
-#define LIGHT_EXTERNAL_RESISTANCE 46900.0F
-#define ADC_REFERENCE_VOLTAGE 3.3F
-
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -71,9 +68,8 @@ UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 uint32_t lightRaw = 0;
-float lightResistance = 0;
 volatile GPIO_PinState motion = 0;
-VIRTUAL_TIMER wakeupTimer;
+volatile VIRTUAL_TIMER wakeupTimer;
 volatile STATE systemState = ACTIVE;
 /* USER CODE END PV */
 
@@ -86,16 +82,11 @@ static void MX_ADC1_Init(void);
 static void MX_TIM2_Init(void);
 static void MX_TIM3_Init(void);
 /* USER CODE BEGIN PFP */
-// -- Virtual timers functions -- //
 void VirtualTimer_Init(VIRTUAL_TIMER *);
 void VirtualTimer_Increment(VIRTUAL_TIMER *);
 void VirtualTimer_Restart(VIRTUAL_TIMER *);
 void VirtualTimer_Disable(VIRTUAL_TIMER *);
 uint8_t VirtualTimer_Finished(VIRTUAL_TIMER *);
-
-// -- Light intensity measurement functions -- //
-float RawADC2Resistance(uint32_t);
-
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -151,7 +142,7 @@ int main(void)
   while (1)
   {
 	  HAL_Delay(1000);
-	  printf("LIGHT: adc-%ld, R-%f.2\n\r", lightRaw, lightResistance);
+	  printf("LIGHT: %ld\n\r", lightRaw);
 	  printf("MOTION: %d\n\r", (uint16_t)motion);
 	  printf("WAKEUP: %d\n\r", (uint16_t)systemState);
 
@@ -465,17 +456,12 @@ void VirtualTimer_Disable(VIRTUAL_TIMER *vtim){
 	vtim ->current = 0;
 }
 
-float RawADC2Resistance(uint32_t rawADC){
-	float SensVoltage = rawADC*ADC_REFERENCE_VOLTAGE/4095;
-	return ((SensVoltage*LIGHT_EXTERNAL_RESISTANCE)/(ADC_REFERENCE_VOLTAGE-SensVoltage));
-}
-
 // Used to check sampling frequency
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc){
 
+	// Sample motion sensor at same rate than
 	//HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
-	// Raw adc to sensor resistance conversion
-	lightResistance = RawADC2Resistance(lightRaw);
+
 }
 
 /*--------------------------------------------------------------------------
