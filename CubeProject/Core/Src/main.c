@@ -19,22 +19,37 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include <stdio.h>
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <stdio.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
+typedef enum {
+	INACTIVE = 0, ACTIVE
+}STATE;
+
+typedef struct {
+	STATE state;
+	uint32_t current;
+	uint32_t target;
+	uint8_t flag;
+}VIRTUAL_TIMER;
 
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+// -- Motion sensor pins -- //
 #define MOTION_SENSOR_PIN GPIO_PIN_11
 #define MOTION_SENSOR_PORT GPIOC
+
+#define MAX_STEPS_CURTAIN 10000
+
+#define WAKEUP_TIME 10 // time in seconds
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -47,12 +62,15 @@ ADC_HandleTypeDef hadc1;
 DMA_HandleTypeDef hdma_adc1;
 
 TIM_HandleTypeDef htim2;
+TIM_HandleTypeDef htim3;
 
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 uint32_t lightRaw = 0;
 volatile GPIO_PinState motion = 0;
+volatile VIRTUAL_TIMER wakeupTimer;
+volatile STATE systemState = ACTIVE;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -62,8 +80,13 @@ static void MX_DMA_Init(void);
 static void MX_USART2_UART_Init(void);
 static void MX_ADC1_Init(void);
 static void MX_TIM2_Init(void);
+static void MX_TIM3_Init(void);
 /* USER CODE BEGIN PFP */
-
+void VirtualTimer_Init(VIRTUAL_TIMER *);
+void VirtualTimer_Increment(VIRTUAL_TIMER *);
+void VirtualTimer_Restart(VIRTUAL_TIMER *);
+void VirtualTimer_Disable(VIRTUAL_TIMER *);
+uint8_t VirtualTimer_Finished(VIRTUAL_TIMER *);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -103,13 +126,14 @@ int main(void)
   MX_USART2_UART_Init();
   MX_ADC1_Init();
   MX_TIM2_Init();
+  MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
   // Timer Initialization
   HAL_TIM_Base_Start(&htim2);
-
+  HAL_TIM_Base_Start_IT(&htim3);
   // Circular sampling from 1 channel every 1ms
   HAL_ADC_Start_DMA(&hadc1, &lightRaw, 1);
-
+  VirtualTimer_Init(&wakeupTimer);
   printf("Setup successful! \n\r");
   /* USER CODE END 2 */
 
@@ -119,8 +143,8 @@ int main(void)
   {
 	  HAL_Delay(1000);
 	  printf("LIGHT: %ld\n\r", lightRaw);
-	  motion = HAL_GPIO_ReadPin(MOTION_SENSOR_PORT, MOTION_SENSOR_PIN);
 	  printf("MOTION: %d\n\r", (uint16_t)motion);
+	  printf("WAKEUP: %d\n\r", (uint16_t)systemState);
 
     /* USER CODE END WHILE */
 
@@ -193,7 +217,7 @@ static void MX_ADC1_Init(void)
   /** Configure the global features of the ADC (Clock, Resolution, Data Alignment and number of conversion)
   */
   hadc1.Instance = ADC1;
-  hadc1.Init.ClockPrescaler = ADC_CLOCKPRESCALER_PCLK_DIV4;
+  hadc1.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV4;
   hadc1.Init.Resolution = ADC_RESOLUTION_12B;
   hadc1.Init.ScanConvMode = ENABLE;
   hadc1.Init.ContinuousConvMode = DISABLE;
@@ -212,7 +236,7 @@ static void MX_ADC1_Init(void)
   */
   sConfig.Channel = ADC_CHANNEL_8;
   sConfig.Rank = 1;
-  sConfig.SamplingTime = ADC_SAMPLETIME_15CYCLES;
+  sConfig.SamplingTime = ADC_SAMPLETIME_3CYCLES;
   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
   {
     Error_Handler();
@@ -265,6 +289,51 @@ static void MX_TIM2_Init(void)
   /* USER CODE BEGIN TIM2_Init 2 */
 
   /* USER CODE END TIM2_Init 2 */
+
+}
+
+/**
+  * @brief TIM3 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM3_Init(void)
+{
+
+  /* USER CODE BEGIN TIM3_Init 0 */
+
+  /* USER CODE END TIM3_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  /* USER CODE BEGIN TIM3_Init 1 */
+
+  /* USER CODE END TIM3_Init 1 */
+  htim3.Instance = TIM3;
+  htim3.Init.Prescaler = 10000;
+  htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim3.Init.Period = HAL_RCC_GetPCLK2Freq() / 10000 - 1;
+  htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim3) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim3, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_UPDATE;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim3, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM3_Init 2 */
+
+  /* USER CODE END TIM3_Init 2 */
 
 }
 
@@ -358,13 +427,67 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
+void VirtualTimer_Init(VIRTUAL_TIMER *vtim){
+	vtim ->state = ACTIVE;
+	vtim ->target = (uint32_t)WAKEUP_TIME;
+	vtim ->flag = 0;
+	vtim ->current = 0;
+}
+void VirtualTimer_Increment(VIRTUAL_TIMER *vtim){
+	if((vtim ->current) < (vtim ->target)){
+		vtim ->current++;
+	}
+	else{
+		vtim ->current = 0;
+		vtim ->flag = 1;
+	}
+}
+void VirtualTimer_Restart(VIRTUAL_TIMER *vtim){
+	vtim ->current = 0;
+	vtim ->flag = 0;
+}
+uint8_t VirtualTimer_Finished(VIRTUAL_TIMER *vtim){
+	return (vtim ->flag);
+}
+void VirtualTimer_Disable(VIRTUAL_TIMER *vtim){
+	vtim ->state = INACTIVE;
+	vtim ->target = 0;
+
+	vtim ->current = 0;
+}
+
 // Used to check sampling frequency
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc){
-	// Small pulse each time (T = 1ms)
-	//HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_SET);
-	//HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
 
-	HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
+	// Sample motion sensor at same rate than
+	//HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
+
+}
+
+/*--------------------------------------------------------------------------
+*	Name:			HAL_TIM_PeriodElapsedCallback
+*	Description:	Callback when Tim3 interrupt occurs.
+*	Parameters:		TIM_HandleTypeDef* htim: timer handler
+*	Returns:		void
+---------------------------------------------------------------------------*/
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim)
+{
+	HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin); // debugging
+
+
+	// Sample of motion sensor (always more than a second)
+	motion = HAL_GPIO_ReadPin(MOTION_SENSOR_PORT, MOTION_SENSOR_PIN);
+	// A second has passed
+	VirtualTimer_Increment(&wakeupTimer);
+	// Feed the wakeup timer if there is movement
+	if (motion){
+		VirtualTimer_Restart(&wakeupTimer);
+		systemState = ACTIVE;
+	} // Stop system if wake up timer is done
+	else if(VirtualTimer_Finished(&wakeupTimer)){
+		systemState = INACTIVE;
+	}
+
 
 }
 

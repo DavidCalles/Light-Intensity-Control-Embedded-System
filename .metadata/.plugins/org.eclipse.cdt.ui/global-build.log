@@ -1,17 +1,65 @@
-19:19:40 **** Incremental Build of configuration Debug for project CubeProject ****
+23:29:14 **** Incremental Build of configuration Debug for project CubeProject ****
 make -j8 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:109:29: warning: passing argument 2 of 'HAL_ADC_Start_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
-  109 |   HAL_ADC_Start_DMA(&hadc1, &lightRaw, 1);
-      |                             ^~~~~~~~~
-In file included from ../Core/Inc/stm32f4xx_hal_conf.h:294,
-                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
-                 from ../Core/Inc/main.h:31,
-                 from ../Core/Src/main.c:21:
-../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h:595:72: note: expected 'uint32_t *' {aka 'long unsigned int *'} but argument is of type 'volatile uint32_t *' {aka 'volatile long unsigned int *'}
-  595 | HAL_StatusTypeDef HAL_ADC_Start_DMA(ADC_HandleTypeDef* hadc, uint32_t* pData, uint32_t Length);
-      |                                                              ~~~~~~~~~~^~~~~
+../Core/Src/main.c:136:3: warning: implicit declaration of function 'VirtualTimerInit'; did you mean 'VirtualTimer_Init'? [-Wimplicit-function-declaration]
+  136 |   VirtualTimerInit(&wakeupTimer);
+      |   ^~~~~~~~~~~~~~~~
+      |   VirtualTimer_Init
+../Core/Src/main.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/main.c:481:25: warning: passing argument 1 of 'VirtualTimer_Increment' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  481 |  VirtualTimer_Increment(&wakeupTimer);
+      |                         ^~~~~~~~~~~~
+../Core/Src/main.c:436:44: note: expected 'VIRTUAL_TIMER *' {aka 'struct <anonymous> *'} but argument is of type 'volatile VIRTUAL_TIMER *' {aka 'volatile struct <anonymous> *'}
+  436 | void VirtualTimer_Increment(VIRTUAL_TIMER *vtim){
+      |                             ~~~~~~~~~~~~~~~^~~~
+../Core/Src/main.c:484:24: warning: passing argument 1 of 'VirtualTimer_Restart' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  484 |   VirtualTimer_Restart(&wakeupTimer);
+      |                        ^~~~~~~~~~~~
+../Core/Src/main.c:445:42: note: expected 'VIRTUAL_TIMER *' {aka 'struct <anonymous> *'} but argument is of type 'volatile VIRTUAL_TIMER *' {aka 'volatile struct <anonymous> *'}
+  445 | void VirtualTimer_Restart(VIRTUAL_TIMER *vtim){
+      |                           ~~~~~~~~~~~~~~~^~~~
+../Core/Src/main.c:487:32: warning: passing argument 1 of 'VirtualTimer_Finished' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  487 |  else if(VirtualTimer_Finished(&wakeupTimer)){
+      |                                ^~~~~~~~~~~~
+../Core/Src/main.c:449:46: note: expected 'VIRTUAL_TIMER *' {aka 'struct <anonymous> *'} but argument is of type 'volatile VIRTUAL_TIMER *' {aka 'volatile struct <anonymous> *'}
+  449 | uint8_t VirtualTimer_Finished(VIRTUAL_TIMER *vtim){
+      |                               ~~~~~~~~~~~~~~~^~~~
+arm-none-eabi-gcc -o "CubeProject.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CubeProject.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+c:\st\stm32cubeide_1.6.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924\tools\arm-none-eabi\bin\ld.exe: Core/Src/main.o: in function `main':
+C:/Users/yodav/Documents/Conestoga_College/SECOND_TERM/SoftwareHardwareInterfacing/Light-Intensity-Control-Embedded-System/CubeProject/Debug/../Core/Src/main.c:136: undefined reference to `VirtualTimerInit'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:65: CubeProject.elf] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+23:30:30 **** Incremental Build of configuration Debug for project CubeProject ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:136:21: warning: passing argument 1 of 'VirtualTimer_Init' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  136 |   VirtualTimer_Init(&wakeupTimer);
+      |                     ^~~~~~~~~~~~
+../Core/Src/main.c:85:24: note: expected 'VIRTUAL_TIMER *' {aka 'struct <anonymous> *'} but argument is of type 'volatile VIRTUAL_TIMER *' {aka 'volatile struct <anonymous> *'}
+   85 | void VirtualTimer_Init(VIRTUAL_TIMER *);
+      |                        ^~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/main.c:481:25: warning: passing argument 1 of 'VirtualTimer_Increment' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  481 |  VirtualTimer_Increment(&wakeupTimer);
+      |                         ^~~~~~~~~~~~
+../Core/Src/main.c:436:44: note: expected 'VIRTUAL_TIMER *' {aka 'struct <anonymous> *'} but argument is of type 'volatile VIRTUAL_TIMER *' {aka 'volatile struct <anonymous> *'}
+  436 | void VirtualTimer_Increment(VIRTUAL_TIMER *vtim){
+      |                             ~~~~~~~~~~~~~~~^~~~
+../Core/Src/main.c:484:24: warning: passing argument 1 of 'VirtualTimer_Restart' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  484 |   VirtualTimer_Restart(&wakeupTimer);
+      |                        ^~~~~~~~~~~~
+../Core/Src/main.c:445:42: note: expected 'VIRTUAL_TIMER *' {aka 'struct <anonymous> *'} but argument is of type 'volatile VIRTUAL_TIMER *' {aka 'volatile struct <anonymous> *'}
+  445 | void VirtualTimer_Restart(VIRTUAL_TIMER *vtim){
+      |                           ~~~~~~~~~~~~~~~^~~~
+../Core/Src/main.c:487:32: warning: passing argument 1 of 'VirtualTimer_Finished' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  487 |  else if(VirtualTimer_Finished(&wakeupTimer)){
+      |                                ^~~~~~~~~~~~
+../Core/Src/main.c:449:46: note: expected 'VIRTUAL_TIMER *' {aka 'struct <anonymous> *'} but argument is of type 'volatile VIRTUAL_TIMER *' {aka 'volatile struct <anonymous> *'}
+  449 | uint8_t VirtualTimer_Finished(VIRTUAL_TIMER *vtim){
+      |                               ~~~~~~~~~~~~~~~^~~~
 arm-none-eabi-gcc -o "CubeProject.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CubeProject.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: CubeProject.elf
  
@@ -19,41 +67,80 @@ arm-none-eabi-objdump -h -S  CubeProject.elf  > "CubeProject.list"
 arm-none-eabi-objcopy  -O binary  CubeProject.elf  "CubeProject.bin"
 arm-none-eabi-size   CubeProject.elf 
    text	   data	    bss	    dec	    hex	filename
-  18896	    120	   1912	  20928	   51c0	CubeProject.elf
+  20368	    124	   2004	  22496	   57e0	CubeProject.elf
 Finished building: default.size.stdout
 Finished building: CubeProject.bin
  
  
 Finished building: CubeProject.list
  
-21:25:02 **** Incremental Build of configuration Debug for project CubeProject ****
-make -j8 all 
-arm-none-eabi-size   CubeProject.elf 
-   text	   data	    bss	    dec	    hex	filename
-  18896	    120	   1912	  20928	   51c0	CubeProject.elf
-Finished building: default.size.stdout
- 
-21:53:06 **** Incremental Build of configuration Debug for project CubeProject ****
+23:32:24 **** Incremental Build of configuration Debug for project CubeProject ****
 make -j8 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'HAL_ADC_ConvCpltCallback':
-../Core/Src/main.c:37:28: error: 'PORTC' undeclared (first use in this function); did you mean 'RTC'?
-   37 | #define MOTION_SENSOR_PORT PORTC
-      |                            ^~~~~
-../Core/Src/main.c:367:28: note: in expansion of macro 'MOTION_SENSOR_PORT'
-  367 |  motion = HAL_GPIO_ReadPin(MOTION_SENSOR_PORT, MOTION_SENSOR_PIN);
-      |                            ^~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:37:28: note: each undeclared identifier is reported only once for each function it appears in
-   37 | #define MOTION_SENSOR_PORT PORTC
-      |                            ^~~~~
-../Core/Src/main.c:367:28: note: in expansion of macro 'MOTION_SENSOR_PORT'
-  367 |  motion = HAL_GPIO_ReadPin(MOTION_SENSOR_PORT, MOTION_SENSOR_PIN);
-      |                            ^~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:136:21: warning: passing argument 1 of 'VirtualTimer_Init' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  136 |   VirtualTimer_Init(&wakeupTimer);
+      |                     ^~~~~~~~~~~~
+../Core/Src/main.c:85:24: note: expected 'VIRTUAL_TIMER *' {aka 'struct <anonymous> *'} but argument is of type 'volatile VIRTUAL_TIMER *' {aka 'volatile struct <anonymous> *'}
+   85 | void VirtualTimer_Init(VIRTUAL_TIMER *);
+      |                        ^~~~~~~~~~~~~~~
+../Core/Src/main.c:147:51: error: expected ';' before '}' token
+  147 |    printf("WAKEUP: %d\n\r", (uint16_t)systemState)
+      |                                                   ^
+      |                                                   ;
+......
+  152 |   }
+      |   ~                                                
+../Core/Src/main.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/main.c:481:25: warning: passing argument 1 of 'VirtualTimer_Increment' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  481 |  VirtualTimer_Increment(&wakeupTimer);
+      |                         ^~~~~~~~~~~~
+../Core/Src/main.c:436:44: note: expected 'VIRTUAL_TIMER *' {aka 'struct <anonymous> *'} but argument is of type 'volatile VIRTUAL_TIMER *' {aka 'volatile struct <anonymous> *'}
+  436 | void VirtualTimer_Increment(VIRTUAL_TIMER *vtim){
+      |                             ~~~~~~~~~~~~~~~^~~~
+../Core/Src/main.c:484:24: warning: passing argument 1 of 'VirtualTimer_Restart' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  484 |   VirtualTimer_Restart(&wakeupTimer);
+      |                        ^~~~~~~~~~~~
+../Core/Src/main.c:445:42: note: expected 'VIRTUAL_TIMER *' {aka 'struct <anonymous> *'} but argument is of type 'volatile VIRTUAL_TIMER *' {aka 'volatile struct <anonymous> *'}
+  445 | void VirtualTimer_Restart(VIRTUAL_TIMER *vtim){
+      |                           ~~~~~~~~~~~~~~~^~~~
+../Core/Src/main.c:487:32: warning: passing argument 1 of 'VirtualTimer_Finished' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  487 |  else if(VirtualTimer_Finished(&wakeupTimer)){
+      |                                ^~~~~~~~~~~~
+../Core/Src/main.c:449:46: note: expected 'VIRTUAL_TIMER *' {aka 'struct <anonymous> *'} but argument is of type 'volatile VIRTUAL_TIMER *' {aka 'volatile struct <anonymous> *'}
+  449 | uint8_t VirtualTimer_Finished(VIRTUAL_TIMER *vtim){
+      |                               ~~~~~~~~~~~~~~~^~~~
 make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
 "make -j8 all" terminated with exit code 2. Build might be incomplete.
-21:53:47 **** Incremental Build of configuration Debug for project CubeProject ****
+23:32:50 **** Incremental Build of configuration Debug for project CubeProject ****
 make -j8 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:136:21: warning: passing argument 1 of 'VirtualTimer_Init' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  136 |   VirtualTimer_Init(&wakeupTimer);
+      |                     ^~~~~~~~~~~~
+../Core/Src/main.c:85:24: note: expected 'VIRTUAL_TIMER *' {aka 'struct <anonymous> *'} but argument is of type 'volatile VIRTUAL_TIMER *' {aka 'volatile struct <anonymous> *'}
+   85 | void VirtualTimer_Init(VIRTUAL_TIMER *);
+      |                        ^~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/main.c:481:25: warning: passing argument 1 of 'VirtualTimer_Increment' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  481 |  VirtualTimer_Increment(&wakeupTimer);
+      |                         ^~~~~~~~~~~~
+../Core/Src/main.c:436:44: note: expected 'VIRTUAL_TIMER *' {aka 'struct <anonymous> *'} but argument is of type 'volatile VIRTUAL_TIMER *' {aka 'volatile struct <anonymous> *'}
+  436 | void VirtualTimer_Increment(VIRTUAL_TIMER *vtim){
+      |                             ~~~~~~~~~~~~~~~^~~~
+../Core/Src/main.c:484:24: warning: passing argument 1 of 'VirtualTimer_Restart' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  484 |   VirtualTimer_Restart(&wakeupTimer);
+      |                        ^~~~~~~~~~~~
+../Core/Src/main.c:445:42: note: expected 'VIRTUAL_TIMER *' {aka 'struct <anonymous> *'} but argument is of type 'volatile VIRTUAL_TIMER *' {aka 'volatile struct <anonymous> *'}
+  445 | void VirtualTimer_Restart(VIRTUAL_TIMER *vtim){
+      |                           ~~~~~~~~~~~~~~~^~~~
+../Core/Src/main.c:487:32: warning: passing argument 1 of 'VirtualTimer_Finished' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  487 |  else if(VirtualTimer_Finished(&wakeupTimer)){
+      |                                ^~~~~~~~~~~~
+../Core/Src/main.c:449:46: note: expected 'VIRTUAL_TIMER *' {aka 'struct <anonymous> *'} but argument is of type 'volatile VIRTUAL_TIMER *' {aka 'volatile struct <anonymous> *'}
+  449 | uint8_t VirtualTimer_Finished(VIRTUAL_TIMER *vtim){
+      |                               ~~~~~~~~~~~~~~~^~~~
 arm-none-eabi-gcc -o "CubeProject.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CubeProject.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: CubeProject.elf
  
@@ -61,61 +148,10 @@ arm-none-eabi-objdump -h -S  CubeProject.elf  > "CubeProject.list"
 arm-none-eabi-objcopy  -O binary  CubeProject.elf  "CubeProject.bin"
 arm-none-eabi-size   CubeProject.elf 
    text	   data	    bss	    dec	    hex	filename
-  19012	    120	   1912	  21044	   5234	CubeProject.elf
-Finished building: default.size.stdout
- 
-Finished building: CubeProject.bin
- 
-Finished building: CubeProject.list
- 
-21:59:12 **** Incremental Build of configuration Debug for project CubeProject ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "CubeProject.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CubeProject.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: CubeProject.elf
- 
-arm-none-eabi-objdump -h -S  CubeProject.elf  > "CubeProject.list"
-arm-none-eabi-objcopy  -O binary  CubeProject.elf  "CubeProject.bin"
-arm-none-eabi-size   CubeProject.elf 
-   text	   data	    bss	    dec	    hex	filename
-  19016	    120	   1912	  21048	   5238	CubeProject.elf
+  20404	    124	   2004	  22532	   5804	CubeProject.elf
 Finished building: default.size.stdout
 Finished building: CubeProject.bin
  
- 
-Finished building: CubeProject.list
- 
-22:03:04 **** Incremental Build of configuration Debug for project CubeProject ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "CubeProject.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CubeProject.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: CubeProject.elf
- 
-arm-none-eabi-objdump -h -S  CubeProject.elf  > "CubeProject.list"
-arm-none-eabi-objcopy  -O binary  CubeProject.elf  "CubeProject.bin"
-arm-none-eabi-size   CubeProject.elf 
-   text	   data	    bss	    dec	    hex	filename
-  19012	    120	   1912	  21044	   5234	CubeProject.elf
-Finished building: default.size.stdout
-Finished building: CubeProject.bin
- 
- 
-Finished building: CubeProject.list
- 
-22:04:51 **** Incremental Build of configuration Debug for project CubeProject ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "CubeProject.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CubeProject.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: CubeProject.elf
- 
-arm-none-eabi-objdump -h -S  CubeProject.elf  > "CubeProject.list"
-arm-none-eabi-objcopy  -O binary  CubeProject.elf  "CubeProject.bin"
-arm-none-eabi-size   CubeProject.elf 
-   text	   data	    bss	    dec	    hex	filename
-  19012	    120	   1912	  21044	   5234	CubeProject.elf
-Finished building: default.size.stdout
- 
-Finished building: CubeProject.bin
  
 Finished building: CubeProject.list
  

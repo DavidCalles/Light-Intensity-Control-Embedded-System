@@ -806,3 +806,182 @@
 2021-11-30 18:08:38,704 [INFO] ApiDb:280 - User favorites MCUs=[]
 2021-11-30 18:08:38,706 [INFO] ApiDb:276 - Save user favorites file C:\Users\yodav/.stm32cubeide/favorites.boards.txt: 2 item(s)
 2021-11-30 18:08:38,706 [INFO] ApiDb:280 - User favorites Boards=[NUCLEO-F411RE, NUCLEO-L432KC]
+2021-11-30 18:27:18,601 [INFO] ParamManager:814 - [Generic UI] PropertyChangeEvent: TAB_STATUS_CHANGED , "dont care", "never mind"
+2021-11-30 18:27:18,668 [INFO] ParamManager:814 - [Generic UI] PropertyChangeEvent: TAB_STATUS_CHANGED , "dont care", "never mind"
+2021-11-30 18:27:18,869 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:28:00,778 [INFO] Gpio:248 - dependency for GPIO [ADC1, RCC, SYS, USART2]
+2021-11-30 18:28:07,337 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,2,46,394x508,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-11-30 18:28:37,316 [INFO] Gpio:248 - dependency for GPIO [ADC1, RCC, SYS, USART2]
+2021-11-30 18:28:37,328 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:28:37,328 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:28:37,328 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:28:37,329 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:28:37,329 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:28:37,329 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:28:37,329 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:28:37,329 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:28:37,330 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:28:37,330 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:28:37,330 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:28:37,330 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:28:37,330 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:28:37,330 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:28:37,358 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:29:39,848 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,450x188,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-11-30 18:29:43,919 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:29:43,921 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:29:43,921 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:29:43,921 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:29:43,922 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:29:43,922 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:29:43,922 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:29:43,922 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:29:43,922 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:29:43,923 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:29:43,923 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:29:43,923 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:29:43,923 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:29:43,923 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:29:43,964 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:29:57,917 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:29:57,920 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:29:57,921 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:29:57,922 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:29:57,922 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:29:57,922 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:29:57,922 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:29:57,923 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:29:57,923 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:29:57,923 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:29:57,923 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:29:57,923 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:29:57,923 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:29:57,923 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:29:57,950 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:32:39,112 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:32:39,117 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:32:39,117 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:32:39,117 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:32:39,117 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:32:39,117 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:32:39,117 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:32:39,118 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:32:39,118 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:32:39,118 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:32:39,118 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:32:39,118 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:32:39,118 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:32:39,118 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:32:39,150 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:38:22,583 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:38:22,588 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:38:22,588 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:38:22,588 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:38:22,589 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:38:22,589 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:38:22,589 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:38:22,589 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:38:22,589 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:38:22,589 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:38:22,589 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:38:22,590 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:38:22,590 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:38:22,590 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:38:22,624 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:39:29,522 [INFO] SpinnerEditor:79 - is string kkkk
+2021-11-30 18:39:30,924 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:39:30,926 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:39:30,927 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:39:30,927 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:39:30,927 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:39:30,927 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:39:30,927 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:39:30,927 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:39:30,928 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:39:30,928 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:39:30,928 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:39:30,928 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:39:30,928 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:39:30,928 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:39:30,955 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:42:14,918 [INFO] Gpio:248 - dependency for GPIO [ADC1, RCC, SYS, USART2]
+2021-11-30 18:42:15,892 [INFO] DbMcusDocs:143 - JSON generation date=Mon Jun 07 04:53:21 EDT 2021 (1623056001)
+2021-11-30 18:42:16,223 [INFO] DbMcusDocs:79 - Found 669 MCUs documents
+2021-11-30 18:42:17,658 [INFO] Gpio:248 - dependency for GPIO [ADC1, RCC, SYS, USART2]
+2021-11-30 18:45:58,830 [INFO] Gpio:248 - dependency for GPIO [ADC1, RCC, SYS, USART2]
+2021-11-30 18:46:15,578 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:46:15,580 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:46:15,580 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:46:15,580 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:46:15,580 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:46:15,580 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:46:15,581 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:46:15,581 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:46:15,581 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:46:15,581 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:46:15,581 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:46:15,581 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:46:15,581 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:46:15,581 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:46:15,614 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 18:47:55,290 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 716023928 Bytes (966787072)
+2021-11-30 18:47:58,342 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 729655416 Bytes (966787072)
+2021-11-30 18:48:00,401 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 767404152 Bytes (966787072)
+2021-11-30 18:48:00,858 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: NVIC
+2021-11-30 18:48:00,858 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: USART
+2021-11-30 18:48:00,858 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: DMA
+2021-11-30 18:48:00,858 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: TIM1_8
+2021-11-30 18:48:00,858 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: SYS
+2021-11-30 18:48:00,858 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: GPIO
+2021-11-30 18:48:00,858 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: ADC
+2021-11-30 18:48:00,858 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: RCC
+2021-11-30 18:48:00,859 [INFO] CodeGenerator:641 - code generatio: config db path: C:\ST\STM32CubeIDE_1.6.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.2.0.202102191602\\db\
+2021-11-30 18:48:01,258 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\MXTmpFiles\license.tmp_save
+2021-11-30 18:48:01,361 [INFO] CodeEngine:247 - Generated code: C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\MXTmpFiles\license.tmp
+2021-11-30 18:48:01,388 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\MXTmpFiles\gpio.tmp_save
+2021-11-30 18:48:01,443 [INFO] CodeEngine:247 - Generated code: C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\MXTmpFiles\gpio.tmp
+2021-11-30 18:48:01,735 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2021-11-30 18:48:01,736 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2021-11-30 18:48:01,752 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\MXTmpFiles\dma.tmp_save
+2021-11-30 18:48:01,801 [INFO] CodeEngine:247 - Generated code: C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\MXTmpFiles\dma.tmp
+2021-11-30 18:48:01,805 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\MXTmpFiles\dma_GV.tmp_save
+2021-11-30 18:48:01,849 [INFO] CodeEngine:247 - Generated code: C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\MXTmpFiles\dma_GV.tmp
+2021-11-30 18:48:01,850 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2021-11-30 18:48:01,852 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2021-11-30 18:48:01,863 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\Core\Src\stm32f4xx_it.c_save
+2021-11-30 18:48:01,947 [INFO] CodeEngine:247 - Generated code: C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\Core\Src\stm32f4xx_it.c
+2021-11-30 18:48:01,954 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\Core\Inc\stm32f4xx_it.h_save
+2021-11-30 18:48:02,009 [INFO] CodeEngine:247 - Generated code: C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\Core\Inc\stm32f4xx_it.h
+2021-11-30 18:48:02,022 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\Core\Src\stm32f4xx_hal_msp.c_save
+2021-11-30 18:48:02,117 [INFO] CodeEngine:247 - Generated code: C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\Core\Src\stm32f4xx_hal_msp.c
+2021-11-30 18:48:02,120 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\MXTmpFiles\system.tmp_save
+2021-11-30 18:48:02,165 [INFO] CodeEngine:247 - Generated code: C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\MXTmpFiles\system.tmp
+2021-11-30 18:48:02,173 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\Core\Inc\stm32f4xx_hal_conf.h_save
+2021-11-30 18:48:02,235 [INFO] CodeEngine:247 - Generated code: C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\Core\Inc\stm32f4xx_hal_conf.h
+2021-11-30 18:48:02,265 [WARN] IPConfigManager:2976 - IP not found : TIM
+2021-11-30 18:48:02,266 [WARN] CodeGenerator:3191 - IP not found : null
+2021-11-30 18:48:02,275 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\Core\Inc\main.h_save
+2021-11-30 18:48:02,332 [INFO] CodeEngine:247 - Generated code: C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\Core\Inc\main.h
+2021-11-30 18:48:02,338 [INFO] CodeEngine:229 - oldGeneratedFile, C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\Core\Src\main.c_save
+2021-11-30 18:48:02,478 [INFO] CodeEngine:247 - Generated code: C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\Core\Src\main.c
+2021-11-30 18:48:03,297 [INFO] ProjectBuilder:2460 - Time for Copy HAL[1] : 119mS.
+2021-11-30 18:48:03,301 [INFO] ProjectBuilder:3418 - Project Generator version: 3.13.0-B3
+2021-11-30 18:48:03,801 [INFO] ConfigFileManager:1242 - The Die is : DIE431
+2021-11-30 18:48:06,001 [INFO] ProjectBuilder:3584 - Time for Generating toolchain IDE Files: 2700mS.
+2021-11-30 18:48:06,002 [INFO] ProjectBuilder:2339 - Time for Copy CMSIS : 0mS.
+2021-11-30 18:48:06,005 [INFO] ProjectBuilder:2339 - Time for Copy CMSIS : 0mS.
+2021-11-30 19:05:23,662 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 19:05:23,665 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 19:05:23,666 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 19:05:23,666 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 19:05:23,666 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 19:05:23,667 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 19:05:23,667 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 19:05:23,667 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 19:05:23,667 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 19:05:23,667 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 19:05:23,668 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 19:05:23,668 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 19:05:23,668 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 19:05:23,669 [INFO] ADCParametersView:97 -                Rank 1 : false
+2021-11-30 19:05:23,763 [INFO] ADCParametersView:97 -                Rank 1 : false
