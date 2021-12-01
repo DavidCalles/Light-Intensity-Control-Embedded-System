@@ -1,0 +1,121 @@
+19:19:40 **** Incremental Build of configuration Debug for project CubeProject ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:109:29: warning: passing argument 2 of 'HAL_ADC_Start_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  109 |   HAL_ADC_Start_DMA(&hadc1, &lightRaw, 1);
+      |                             ^~~~~~~~~
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:294,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h:595:72: note: expected 'uint32_t *' {aka 'long unsigned int *'} but argument is of type 'volatile uint32_t *' {aka 'volatile long unsigned int *'}
+  595 | HAL_StatusTypeDef HAL_ADC_Start_DMA(ADC_HandleTypeDef* hadc, uint32_t* pData, uint32_t Length);
+      |                                                              ~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "CubeProject.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CubeProject.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: CubeProject.elf
+ 
+arm-none-eabi-objdump -h -S  CubeProject.elf  > "CubeProject.list"
+arm-none-eabi-objcopy  -O binary  CubeProject.elf  "CubeProject.bin"
+arm-none-eabi-size   CubeProject.elf 
+   text	   data	    bss	    dec	    hex	filename
+  18896	    120	   1912	  20928	   51c0	CubeProject.elf
+Finished building: default.size.stdout
+Finished building: CubeProject.bin
+ 
+ 
+Finished building: CubeProject.list
+ 
+21:25:02 **** Incremental Build of configuration Debug for project CubeProject ****
+make -j8 all 
+arm-none-eabi-size   CubeProject.elf 
+   text	   data	    bss	    dec	    hex	filename
+  18896	    120	   1912	  20928	   51c0	CubeProject.elf
+Finished building: default.size.stdout
+ 
+21:53:06 **** Incremental Build of configuration Debug for project CubeProject ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_ADC_ConvCpltCallback':
+../Core/Src/main.c:37:28: error: 'PORTC' undeclared (first use in this function); did you mean 'RTC'?
+   37 | #define MOTION_SENSOR_PORT PORTC
+      |                            ^~~~~
+../Core/Src/main.c:367:28: note: in expansion of macro 'MOTION_SENSOR_PORT'
+  367 |  motion = HAL_GPIO_ReadPin(MOTION_SENSOR_PORT, MOTION_SENSOR_PIN);
+      |                            ^~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:37:28: note: each undeclared identifier is reported only once for each function it appears in
+   37 | #define MOTION_SENSOR_PORT PORTC
+      |                            ^~~~~
+../Core/Src/main.c:367:28: note: in expansion of macro 'MOTION_SENSOR_PORT'
+  367 |  motion = HAL_GPIO_ReadPin(MOTION_SENSOR_PORT, MOTION_SENSOR_PIN);
+      |                            ^~~~~~~~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+21:53:47 **** Incremental Build of configuration Debug for project CubeProject ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "CubeProject.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CubeProject.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: CubeProject.elf
+ 
+arm-none-eabi-objdump -h -S  CubeProject.elf  > "CubeProject.list"
+arm-none-eabi-objcopy  -O binary  CubeProject.elf  "CubeProject.bin"
+arm-none-eabi-size   CubeProject.elf 
+   text	   data	    bss	    dec	    hex	filename
+  19012	    120	   1912	  21044	   5234	CubeProject.elf
+Finished building: default.size.stdout
+ 
+Finished building: CubeProject.bin
+ 
+Finished building: CubeProject.list
+ 
+21:59:12 **** Incremental Build of configuration Debug for project CubeProject ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "CubeProject.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CubeProject.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: CubeProject.elf
+ 
+arm-none-eabi-objdump -h -S  CubeProject.elf  > "CubeProject.list"
+arm-none-eabi-objcopy  -O binary  CubeProject.elf  "CubeProject.bin"
+arm-none-eabi-size   CubeProject.elf 
+   text	   data	    bss	    dec	    hex	filename
+  19016	    120	   1912	  21048	   5238	CubeProject.elf
+Finished building: default.size.stdout
+Finished building: CubeProject.bin
+ 
+ 
+Finished building: CubeProject.list
+ 
+22:03:04 **** Incremental Build of configuration Debug for project CubeProject ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "CubeProject.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CubeProject.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: CubeProject.elf
+ 
+arm-none-eabi-objdump -h -S  CubeProject.elf  > "CubeProject.list"
+arm-none-eabi-objcopy  -O binary  CubeProject.elf  "CubeProject.bin"
+arm-none-eabi-size   CubeProject.elf 
+   text	   data	    bss	    dec	    hex	filename
+  19012	    120	   1912	  21044	   5234	CubeProject.elf
+Finished building: default.size.stdout
+Finished building: CubeProject.bin
+ 
+ 
+Finished building: CubeProject.list
+ 
+22:04:51 **** Incremental Build of configuration Debug for project CubeProject ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "CubeProject.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\yodav\Documents\Conestoga_College\SECOND_TERM\SoftwareHardwareInterfacing\Light-Intensity-Control-Embedded-System\CubeProject\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CubeProject.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: CubeProject.elf
+ 
+arm-none-eabi-objdump -h -S  CubeProject.elf  > "CubeProject.list"
+arm-none-eabi-objcopy  -O binary  CubeProject.elf  "CubeProject.bin"
+arm-none-eabi-size   CubeProject.elf 
+   text	   data	    bss	    dec	    hex	filename
+  19012	    120	   1912	  21044	   5234	CubeProject.elf
+Finished building: default.size.stdout
+ 
+Finished building: CubeProject.bin
+ 
+Finished building: CubeProject.list
+ 
