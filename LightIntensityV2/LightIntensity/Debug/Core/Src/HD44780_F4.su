@@ -1,0 +1,13 @@
+HD44780_F4.c:171:6:GPIO_SetBits	16	static
+HD44780_F4.c:175:6:GPIO_ResetBits	16	static
+HD44780_F4.c:181:6:hd44780_wr_hi_nibble	16	static
+HD44780_F4.c:216:6:hd44780_wr_lo_nibble	16	static
+HD44780_F4.c:250:6:hd44780_write	16	static
+HD44780_F4.c:317:6:hd44780_wr_cmd	16	static
+HD44780_F4.c:322:6:hd44780_wr_data	16	static
+HD44780_F4.c:342:6:hd44780_Delay	16	static
+HD44780_F4.c:364:6:HD44780_Init	32	static
+HD44780_F4.c:441:6:HD44780_PutChar	16	static
+HD44780_F4.c:461:6:HD44780_GotoXY	24	static
+HD44780_F4.c:501:6:HD44780_PutStr	24	static
+HD44780_F4.c:523:6:HD44780_ClrScr	8	static
