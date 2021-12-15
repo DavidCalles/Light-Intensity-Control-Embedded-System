@@ -15,6 +15,11 @@
   *                        opensource.org/licenses/BSD-3-Clause
   *
   ******************************************************************************
+  TIM 1: PWM, interrupt enabled each INTERRUPT_PERIOD microseconds
+  TIM 2: ADC trigger, no interrupt, 1ms fixed sampling period
+  TIM 3: Encoder, no interrupt
+  ADC: triggered by tim2 and moved with DMA
+
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
@@ -48,7 +53,7 @@ typedef struct {
 
 #define MAX_STEPS_CURTAIN 10000
 
-#define WAKEUP_TIME 5 // time in seconds
+#define WAKEUP_TIME 15 // time in seconds
 
 #define LIGHT_EXTERNAL_RESISTANCE 82000.0F
 #define ADC_REFERENCE_VOLTAGE 3.3F
@@ -57,6 +62,22 @@ typedef struct {
 #define LCD_BACKGROUND_PIN GPIO_PIN_10
 #define LCD_BACKGROUND_PORT GPIOA
 
+#define INTERRUPT_PERIOD 50000U // uSeconds
+#define PULSE_MULTIPLIER 0.2
+
+#define DC_MOTOR_IN1_PIN GPIO_PIN_1
+#define DC_MOTOR_IN2_PIN GPIO_PIN_0
+#define DC_MOTOR_ENABLE_PIN GPIO_PIN_8
+
+#define DC_MOTOR_PORT GPIOA
+
+#define FORWARD 1
+#define REVERSE -1
+#define STOP 0
+
+#define DESIRED_LIGHT_INTENSITY 10000 // Resistance
+#define CURTAIN_REFRESH_TIME 3000
+#define CURTAIN_MOVEMENT_TIME 1000
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -68,12 +89,14 @@ typedef struct {
 ADC_HandleTypeDef hadc1;
 DMA_HandleTypeDef hdma_adc1;
 
+TIM_HandleTypeDef htim1;
 TIM_HandleTypeDef htim2;
 TIM_HandleTypeDef htim3;
 
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
+const uint16_t periodEncoder = 0xFFFF;
 uint32_t lightRaw = 0;
 float lightResistance = 0;
 volatile GPIO_PinState motion = 0;
@@ -89,7 +112,10 @@ static void MX_USART2_UART_Init(void);
 static void MX_ADC1_Init(void);
 static void MX_TIM2_Init(void);
 static void MX_TIM3_Init(void);
+static void MX_TIM1_Init(void);
 /* USER CODE BEGIN PFP */
+
+static int TIM3_Encoder_Init(void);
 // -- Virtual timers functions -- //
 void VirtualTimer_Init(VIRTUAL_TIMER *);
 void VirtualTimer_Increment(VIRTUAL_TIMER *);
@@ -99,6 +125,12 @@ uint8_t VirtualTimer_Finished(VIRTUAL_TIMER *);
 
 // -- Light intensity measurement functions -- //
 float RawADC2Resistance(uint32_t);
+
+// -- Encoder functions -- //
+uint16_t Encoder(void);
+
+void SetMotorDirection(int);
+void SystemStandby(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -138,11 +170,16 @@ int main(void)
   MX_USART2_UART_Init();
   MX_ADC1_Init();
   MX_TIM2_Init();
-  MX_TIM3_Init();
+  //MX_TIM3_Init();
+  MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
   // Timer Initialization
   HAL_TIM_Base_Start(&htim2);
-  HAL_TIM_Base_Start_IT(&htim3);
+  //HAL_TIM_Base_Start_IT(&htim3);
+  TIM3_Encoder_Init();
+  HAL_TIM_Base_Start_IT(&htim1);
+  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
+  SetMotorDirection(FORWARD);
   // Circular sampling from 1 channel every 1ms
   HAL_ADC_Start_DMA(&hadc1, &lightRaw, 1);
   VirtualTimer_Init(&wakeupTimer);
@@ -164,12 +201,46 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  HAL_Delay(1000);
+
+	  HAL_Delay(CURTAIN_REFRESH_RATE);
 	  printf("LIGHT: adc-%ld, R-%.2fk\n\r", lightRaw, lightResistance/1000);
 	  printf("MOTION: %d\n\r", (uint16_t)motion);
 	  printf("WAKEUP: %d\n\r", (uint16_t)systemState);
 
-
+	  if(systemState){
+		  if(lightResistance < DESIRED_LIGHT_INTENSITY){
+			  // Close curtains
+			  SetMotorDirection(FORWARD);
+			  HD44780_ClrScr();
+			HD44780_GotoXY(0,0);
+			HD44780_PutStr("Closing");
+			HD44780_GotoXY(0,1);
+			HD44780_PutStr("Curtains");
+		  }
+		  else if(lightResistance > DESIRED_LIGHT_INTENSITY){
+			  // Open curtains
+			  SetMotorDirection(REVERSE);
+			  HD44780_ClrScr();
+			HD44780_GotoXY(0,0);
+			HD44780_PutStr("Opening");
+			HD44780_GotoXY(0,1);
+			HD44780_PutStr("Curtains");
+		  }
+		  else{
+			  // Leave curtains as they are
+			  SetMotorDirection(STOP);
+			  HD44780_ClrScr();
+			HD44780_GotoXY(0,0);
+			HD44780_PutStr("Just");
+			HD44780_GotoXY(0,1);
+			HD44780_PutStr("there");
+		  }
+	  }
+	  else{
+		  SystemStandby();
+	  }
+	  HAL_Delay(CURTAIN_MOVEMENT_TIME);
+	  SetMotorDirection(STOP);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -268,6 +339,81 @@ static void MX_ADC1_Init(void)
   /* USER CODE BEGIN ADC1_Init 2 */
 
   /* USER CODE END ADC1_Init 2 */
+
+}
+
+/**
+  * @brief TIM1 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM1_Init(void)
+{
+
+  /* USER CODE BEGIN TIM1_Init 0 */
+
+  /* USER CODE END TIM1_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+  TIM_OC_InitTypeDef sConfigOC = {0};
+  TIM_BreakDeadTimeConfigTypeDef sBreakDeadTimeConfig = {0};
+
+  /* USER CODE BEGIN TIM1_Init 1 */
+
+  /* USER CODE END TIM1_Init 1 */
+  htim1.Instance = TIM1;
+  htim1.Init.Prescaler = HAL_RCC_GetPCLK2Freq() / 1000000 - 1;
+  htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim1.Init.Period = INTERRUPT_PERIOD;
+  htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim1.Init.RepetitionCounter = 0;
+  htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
+  if (HAL_TIM_Base_Init(&htim1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim1, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  if (HAL_TIM_PWM_Init(&htim1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_UPDATE;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim1, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sConfigOC.OCMode = TIM_OCMODE_PWM1;
+  sConfigOC.Pulse = INTERRUPT_PERIOD*PULSE_MULTIPLIER; // 50% duty cycle
+  sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+  sConfigOC.OCNPolarity = TIM_OCNPOLARITY_HIGH;
+  sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
+  sConfigOC.OCIdleState = TIM_OCIDLESTATE_RESET;
+  sConfigOC.OCNIdleState = TIM_OCNIDLESTATE_RESET;
+  if (HAL_TIM_PWM_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sBreakDeadTimeConfig.OffStateRunMode = TIM_OSSR_DISABLE;
+  sBreakDeadTimeConfig.OffStateIDLEMode = TIM_OSSI_DISABLE;
+  sBreakDeadTimeConfig.LockLevel = TIM_LOCKLEVEL_OFF;
+  sBreakDeadTimeConfig.DeadTime = 0;
+  sBreakDeadTimeConfig.BreakState = TIM_BREAK_DISABLE;
+  sBreakDeadTimeConfig.BreakPolarity = TIM_BREAKPOLARITY_HIGH;
+  sBreakDeadTimeConfig.AutomaticOutput = TIM_AUTOMATICOUTPUT_DISABLE;
+  if (HAL_TIMEx_ConfigBreakDeadTime(&htim1, &sBreakDeadTimeConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM1_Init 2 */
+
+  /* USER CODE END TIM1_Init 2 */
+  HAL_TIM_MspPostInit(&htim1);
 
 }
 
@@ -426,7 +572,7 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, LD2_Pin|GPIO_PIN_10, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0|GPIO_PIN_1|LD2_Pin|GPIO_PIN_10, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : B1_Pin */
   GPIO_InitStruct.Pin = B1_Pin;
@@ -440,8 +586,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : LD2_Pin PA10 */
-  GPIO_InitStruct.Pin = LD2_Pin|GPIO_PIN_10;
+  /*Configure GPIO pins : PA0 PA1 LD2_Pin PA10 */
+  GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|LD2_Pin|GPIO_PIN_10;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -450,10 +596,86 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+static int TIM3_Encoder_Init(void){
+
+HAL_StatusTypeDef rc;
+GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+	/* Configure these timer pins for ENCODER */
+	// Channel 1
+	GPIO_InitStruct.Pin = GPIO_PIN_6 | GPIO_PIN_7;
+	GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+	GPIO_InitStruct.Alternate = 2;
+	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+  // Channel 2
+	__HAL_RCC_GPIOB_CLK_ENABLE();
+	GPIO_InitStruct.Pin = GPIO_PIN_6 | GPIO_PIN_7;
+	GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+	GPIO_InitStruct.Alternate = 2;
+	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Initialize timer for ENCODER*/
+  __HAL_RCC_TIM3_CLK_ENABLE();
+  htim3.Instance = TIM3;
+  htim3.Init.Prescaler = 0;
+  htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim3.Init.Period = periodEncoder;
+  htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim3.Init.RepetitionCounter = 0;
+  rc = HAL_TIM_Base_Init(&htim3);
+  if (rc != HAL_OK)
+  {
+	  printf("Failed to initialize Timer 3 Base, “ ”rc=%u\n", rc);
+	  return -1;
+  }
+
+  TIM_Encoder_InitTypeDef encoderConfig;
+  encoderConfig.EncoderMode = TIM_ENCODERMODE_TI12;
+  encoderConfig.IC1Polarity = 0;
+  encoderConfig.IC1Selection = TIM_ICSELECTION_DIRECTTI;
+  encoderConfig.IC1Prescaler = 0;
+  encoderConfig.IC1Filter = 3;
+  encoderConfig.IC2Polarity = 0;
+  encoderConfig.IC2Selection = TIM_ICSELECTION_DIRECTTI;
+  encoderConfig.IC2Prescaler = 0;
+  encoderConfig.IC2Filter = 3;
+  rc = HAL_TIM_Encoder_Init(&htim3, &encoderConfig);
+  if (rc != HAL_OK)
+  {
+	  printf("Failed to initialize Timer 3 Encoder, "
+			  "rc=%u\n",
+			  rc);
+	  return -1;
+  }
+  rc = HAL_TIM_Encoder_Start(&htim3, TIM_CHANNEL_1);
+  if (rc != HAL_OK)
+  {
+	  printf("Failed to start Timer 3 Encoder, "
+			  "rc=%u\n",
+			  rc);
+	  return -1;
+  }
+  rc = HAL_TIM_Encoder_Start(&htim3, TIM_CHANNEL_2);
+  if (rc != HAL_OK)
+  {
+	  printf("Failed to start Timer 3 Encoder, "
+			  "rc=%u\n",
+			  rc);
+	  return -1;
+  }
+  //HAL_GPIO_WritePin(DC_MOTOR_PORT, DC_MOTOR_ENABLE_PIN, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(DC_MOTOR_PORT, DC_MOTOR_IN1_PIN, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(DC_MOTOR_PORT, DC_MOTOR_IN2_PIN, GPIO_PIN_RESET);
+  return 0;
+}
 
 void VirtualTimer_Init(VIRTUAL_TIMER *vtim){
 	vtim ->state = ACTIVE;
-	vtim ->target = (uint32_t)WAKEUP_TIME;
+	vtim ->target = (uint32_t)WAKEUP_TIME * 1000000 / INTERRUPT_PERIOD;
 	vtim ->flag = 0;
 	vtim ->current = 0;
 }
@@ -483,6 +705,40 @@ void VirtualTimer_Disable(VIRTUAL_TIMER *vtim){
 float RawADC2Resistance(uint32_t rawADC){
 	float SensVoltage = rawADC*ADC_REFERENCE_VOLTAGE/4095;
 	return ((SensVoltage*LIGHT_EXTERNAL_RESISTANCE)/(ADC_REFERENCE_VOLTAGE-SensVoltage));
+}
+
+uint16_t Encoder()
+{
+  uint16_t currentEnc = __HAL_TIM_GET_COUNTER(&htim3);
+
+  printf("%d\n", currentEnc);
+
+  return currentEnc;
+}
+
+void SetMotorDirection(int dir){
+	if(dir > 0){
+		HAL_GPIO_WritePin(DC_MOTOR_PORT, DC_MOTOR_IN1_PIN, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(DC_MOTOR_PORT, DC_MOTOR_IN2_PIN, GPIO_PIN_RESET);
+	}
+	else if(dir < 0){
+		HAL_GPIO_WritePin(DC_MOTOR_PORT, DC_MOTOR_IN1_PIN, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(DC_MOTOR_PORT, DC_MOTOR_IN2_PIN, GPIO_PIN_SET);
+	}
+	else{
+		HAL_GPIO_WritePin(DC_MOTOR_PORT, DC_MOTOR_IN1_PIN, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(DC_MOTOR_PORT, DC_MOTOR_IN2_PIN, GPIO_PIN_RESET);
+	}
+}
+
+void SystemStandby(void){
+	HD44780_ClrScr();
+	HD44780_GotoXY(5,0);
+	HD44780_PutStr("Standby");
+	HD44780_GotoXY(7,1);
+	HD44780_PutStr("Mode");
+
+	SetMotorDirection(STOP);
 }
 
 // Used to check sampling frequency
